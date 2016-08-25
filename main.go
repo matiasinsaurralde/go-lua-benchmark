@@ -3,11 +3,9 @@ package main
 /*
 #cgo pkg-config: luajit
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include <lua.h>
 #include <lualib.h>
 #include <lauxlib.h>
 
@@ -28,8 +26,10 @@ const char* LuaCall(int cached) {
     luaL_dostring(L, cached_script);
   }
 
+  // This is the input
   const char* input = "hello from lua\n";
 
+  // Call the Lua function
   lua_getglobal(L, "dispatch");
   lua_pushstring(L, input);
   lua_pcall(L, 1, 1, 0);
@@ -38,6 +38,7 @@ const char* LuaCall(int cached) {
 
   char* output = strdup(lua_output);
 
+  // It's now safe to destroy this Lua state.
   lua_close(L);
 
   return output;
