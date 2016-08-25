@@ -22,7 +22,7 @@ The fastest handler ever!
 
 ## Results
 
-Using [boom]() with the following parameters:
+Using [boom](https://github.com/rakyll/boom) with the following parameters:
 
 **-n 5000** (number of requests)
 
